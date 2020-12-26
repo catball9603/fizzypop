@@ -1,17 +1,20 @@
+import 'react-native-gesture-handler';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import AppLoading from 'expo-app-loading';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import { Ionicons } from '@expo/vector-icons';
+import { NavigationContainer } from '@react-navigation/native';
+import Stack from './src/navigation/Stack';
 
 const cacheImages = (images) =>
-  images.map((img) => {
-    if (typeof img === 'string') {
-      return Image.prefetch(img);
+  images.map((image) => {
+    if (typeof image === 'string') {
+      return Image.prefetch(image);
     } else {
-      return Asset.fromModule(img).downloadAsync();
+      return Asset.fromModule(image).downloadAsync();
     }
   });
 
@@ -28,14 +31,17 @@ export default function App() {
     return Promise.all([...images, ...fonts]);
   };
   const onFinish = () => setIsReady(true);
+  const onError = (e) => console.log(e);
   return (
     <View style={styles.container}>
       {isReady ? (
-        <Text>Ready!</Text>
+        <NavigationContainer>
+          <Stack />
+        </NavigationContainer>
       ) : (
-        <AppLoading startAsync={loadAssets} onFinish={onFinish} onError={console.log((e) => console.log(e))} />
+        <AppLoading startAsync={loadAssets} onFinish={onFinish} onError={onError} />
       )}
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </View>
   );
 }
@@ -43,8 +49,5 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
