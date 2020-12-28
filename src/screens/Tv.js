@@ -4,6 +4,7 @@ import { tvApi } from '../api';
 
 function Tv() {
   const [tv, setTv] = useState({
+    loading: true,
     today: [],
     thisWeek: [],
     topRated: [],
@@ -19,7 +20,17 @@ function Tv() {
     const [thisWeek, thisWeekError] = await tvApi.thisWeek();
     const [topRated, topRatedError] = await tvApi.topRated();
     const [popular, popularError] = await tvApi.popular();
-    setTv({ today, thisWeek, topRated, popular, todayError, thisWeekError, topRatedError, popularError });
+    setTv({
+      loading: false,
+      today,
+      thisWeek,
+      topRated,
+      popular,
+      todayError,
+      thisWeekError,
+      topRatedError,
+      popularError,
+    });
   };
   useEffect(() => {
     getData();

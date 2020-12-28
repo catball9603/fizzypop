@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import { movieApi } from '../api';
+import { StyleSheet, View } from 'react-native';
+import { movieApi } from '../../api';
+import MoviePresenter from './MoviePresenter';
 
-function Movie({ navigation }) {
+function Movie() {
   const [movies, setMovies] = useState({
+    loading: true,
     nowPlaying: [],
     popular: [],
     upcoming: [],
@@ -16,6 +18,7 @@ function Movie({ navigation }) {
     const [popular, popularError] = await movieApi.popular();
     const [upcoming, upcomingError] = await movieApi.upcoming();
     setMovies({
+      loading: false,
       nowPlaying,
       popular,
       upcoming,
@@ -31,8 +34,7 @@ function Movie({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{movies.nowPlaying?.length}</Text>
-      <Button title="Movie" onPress={() => navigation.navigate('Detail')} />
+      <MoviePresenter {...movies} />
     </View>
   );
 }
@@ -40,8 +42,6 @@ function Movie({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: 'black',
   },
   text: {

@@ -21,7 +21,7 @@ function Favs() {
 
   return (
     <View style={styles.container}>
-      <Text>{movies.discover.length}</Text>
+      <Text style={styles.text}>{movies.results?.length}</Text>
     </View>
   );
 }
@@ -31,6 +31,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  text: {
+    color: 'black',
   },
 });
 
