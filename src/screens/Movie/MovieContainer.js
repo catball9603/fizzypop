@@ -42,7 +42,7 @@ function Movie() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: '#212529',
   },
   text: {
     color: '#fff',

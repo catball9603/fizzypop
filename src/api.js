@@ -9,6 +9,7 @@ const makeRequest = (path, params) =>
       ...params,
       api_key: API_KEY,
       language: 'ko-KR',
+      region: 'KR',
     },
   });
 
@@ -43,4 +44,4 @@ export const tvApi = {
   show: (id) => getAnything(`/tv/${id}`),
 };
 
-export const apiImage = (path) => `https://image.tmdb.org/t/p/original/${path}`;
+export const apiImage = (path) => `https://image.tmdb.org/t/p/w500/${path}`;
