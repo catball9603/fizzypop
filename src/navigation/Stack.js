@@ -28,9 +28,9 @@ export default () => (
   <Stack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#212529',
-        shadowColor: '#212529',
-        borderBottomColor: '#212529',
+        backgroundColor: '#212121',
+        shadowColor: '#212121',
+        borderBottomColor: '#212121',
       },
       headerTintColor: '#fff',
       headerBackTitleVisible: false,

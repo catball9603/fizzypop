@@ -28,7 +28,7 @@ function VerticalContents({ id, poster, title, votes }) {
       <Container>
         <Poster url={poster} />
         <TitleText>{trimText(title, 10)}</TitleText>
-        <Vote>⭐ {votes} / 10</Vote>
+        {votes > 0 && <Vote>⭐ {votes} / 10</Vote>}
       </Container>
     </TouchableOpacity>
   );
@@ -36,7 +36,7 @@ function VerticalContents({ id, poster, title, votes }) {
 
 VerticalContents.propTypes = {
   id: PropTypes.number.isRequired,
-  poster: PropTypes.string.isRequired,
+  poster: PropTypes.string,
   title: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
 };

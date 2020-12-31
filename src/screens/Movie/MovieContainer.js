@@ -34,7 +34,7 @@ function Movie() {
 
   return (
     <View style={styles.container}>
-      <MoviePresenter {...movies} />
+      <MoviePresenter refreshFn={getData} {...movies} />
     </View>
   );
 }
@@ -42,7 +42,7 @@ function Movie() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#212529',
+    backgroundColor: '#212121',
   },
   text: {
     color: '#fff',

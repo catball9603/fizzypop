@@ -24,7 +24,7 @@ export default function App() {
   const [isReady, setIsReady] = useState(false);
   const loadAssets = () => {
     const images = cacheImages([
-      'https://images.unsplash.com/photo-1608806947629-da2ae50be954?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+      'https://images.unsplash.com/photo-1542204637-e67bc7d41e48?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=675&q=80',
       require('./assets/splash.png'),
     ]);
     const fonts = cacheFont([Ionicons.font]);

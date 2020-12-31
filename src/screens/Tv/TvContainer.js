@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { tvApi } from '../api';
+import { StyleSheet, View } from 'react-native';
+import { tvApi } from '../../api';
+import TvPresenter from './TvPresenter';
 
 function Tv() {
   const [tv, setTv] = useState({
@@ -37,7 +38,7 @@ function Tv() {
   }, []);
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{tv.today.length}</Text>
+      <TvPresenter refreshFn={getData} {...tv} />
     </View>
   );
 }
@@ -45,12 +46,7 @@ function Tv() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'black',
-  },
-  text: {
-    color: 'white',
+    backgroundColor: '#212121',
   },
 });
 

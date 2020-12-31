@@ -3,8 +3,7 @@ import styled from 'styled-components/native';
 import PropTypes from 'prop-types';
 import { apiImage } from '../api';
 import Poster from './Poster';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Text } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import { trimText } from '../utils';
 
 const Container = styled.View`
@@ -15,8 +14,8 @@ const Container = styled.View`
 const Bg = styled.Image`
   width: 100%;
   height: 100%;
-  opacity: 0.4;
   position: absolute;
+  opacity: 0.4;
 `;
 
 const Content = styled.View`
@@ -26,6 +25,7 @@ const Content = styled.View`
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  padding: 0 5px;
 `;
 const Data = styled.View`
   width: 50%;
@@ -47,8 +47,9 @@ const Overview = styled.Text`
 `;
 
 const Button = styled.View`
+  justify-content: center;
   width: 100px;
-  height: 30px;
+  height: 35px;
   margin-top: 10px;
   background-color: #e03131;
   border-radius: 3px;

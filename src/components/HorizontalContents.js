@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 import Poster from './Poster';
-import { trimText } from '../utils';
+import { formatDate, trimText } from '../utils';
 import PropTypes from 'prop-types';
 
 const Container = styled.View`
@@ -22,9 +22,9 @@ const Title = styled.Text`
   font-weight: bold;
   font-size: 15px;
 `;
-const Votes = styled.Text`
+const ReleaseDate = styled.Text`
   color: #dee2e6;
-  padding: 10px 0 5px 0;
+  padding: 10px 0;
   font-size: 13px;
 `;
 const Overview = styled.Text`
@@ -32,14 +32,14 @@ const Overview = styled.Text`
   font-size: 13px;
 `;
 
-function HorizontalContents({ id, poster, title, date, overview }) {
+function HorizontalContents({ id, poster, title, releaseDate, overview, votes }) {
   return (
     <TouchableOpacity>
       <Container>
         <Poster url={poster} />
         <Data>
-          <Title>{trimText(title, 30)}</Title>
-          <Votes>{date}</Votes>
+          <Title>🎬 {trimText(title, 20)}</Title>
+          <ReleaseDate>{releaseDate ? `개봉일 : ${formatDate(releaseDate)}` : `⭐ ${votes} / 10`}</ReleaseDate>
           <Overview ellipsizeMode="tail">{trimText(overview, 90)}</Overview>
         </Data>
       </Container>
@@ -49,9 +49,10 @@ function HorizontalContents({ id, poster, title, date, overview }) {
 
 HorizontalContents.propTypes = {
   id: PropTypes.number.isRequired,
-  poster: PropTypes.string.isRequired,
+  poster: PropTypes.string,
   title: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  releaseDate: PropTypes.string,
+  votes: PropTypes.number,
   overview: PropTypes.string.isRequired,
 };
 
