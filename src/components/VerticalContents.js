@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import { trimText } from '../utils';
 import Poster from './Poster';
 import PropTypes from 'prop-types';
+import { useNavigation } from '@react-navigation/native';
 
 const Container = styled.View`
   display: flex;
@@ -22,9 +23,11 @@ const Vote = styled.Text`
   font-size: 12px;
 `;
 
-function VerticalContents({ id, poster, title, votes }) {
+function VerticalContents({ id, poster, title, votes, backgroundImage, overview, isTv = false }) {
+  const navigation = useNavigation();
+  const goToDetail = () => navigation.navigate('Detail', { id, title, poster, votes, backgroundImage, overview, isTv });
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={goToDetail}>
       <Container>
         <Poster url={poster} />
         <TitleText>{trimText(title, 10)}</TitleText>
@@ -39,6 +42,7 @@ VerticalContents.propTypes = {
   poster: PropTypes.string,
   title: PropTypes.string.isRequired,
   votes: PropTypes.number.isRequired,
+  overview: PropTypes.string,
 };
 
 export default VerticalContents;

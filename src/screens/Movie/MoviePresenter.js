@@ -1,10 +1,9 @@
 import React from 'react';
 import Swiper from 'react-native-web-swiper';
-import { Dimensions } from 'react-native';
+import { Dimensions, View } from 'react-native';
 import Slide from '../../components/Slide';
 import styled from 'styled-components/native';
 import Title from '../../components/Title';
-import { ScrollView } from 'react-native';
 import VerticalContents from '../../components/VerticalContents';
 import HorizontalContents from '../../components/HorizontalContents';
 import PageLoading from '../../components/PageLoading';
@@ -16,8 +15,6 @@ const SliderContainer = styled.View`
   width: 100%;
   height: ${height / 4}px;
 `;
-
-const UpcomingContent = styled.View``;
 
 function MoviePresenter({ loading, nowPlaying, popular, upcoming, refreshFn }) {
   return (
@@ -47,22 +44,25 @@ function MoviePresenter({ loading, nowPlaying, popular, upcoming, refreshFn }) {
               title={movie.title}
               votes={movie.vote_average}
               poster={movie.poster_path}
+              overview={movie.overview}
+              backgroundImage={movie.backdrop_path}
             />
           ))}
         </HorizontalSlider>
         <Title title={'Coming Soon'} />
-        <UpcomingContent>
+        <View>
           {upcoming.map((movie) => (
             <HorizontalContents
               key={movie.id}
               id={movie.id}
               title={movie.title}
               releaseDate={movie.release_date}
-              poster={movie.poster_path !== null ? movie.poster_path : '/ndAvF4JLsliGreX87jAc9GdjmJY.png'}
+              poster={movie.poster_path}
               overview={movie.overview}
+              backgroundImage={movie.backdrop_path}
             />
           ))}
-        </UpcomingContent>
+        </View>
       </>
     </PageLoading>
   );

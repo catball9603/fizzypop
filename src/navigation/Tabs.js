@@ -29,7 +29,8 @@ const Tabs = createBottomTabNavigator();
 
 export default ({ navigation, route }) => {
   useLayoutEffect(() => {
-    navigation.setOptions({ headerTitle: getHeaderTitle(route) });
+    const name = getHeaderTitle(route);
+    navigation.setOptions({ title: name });
   }, [navigation, route]);
 
   // useLayoutEffect(() => {

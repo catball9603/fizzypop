@@ -8,9 +8,9 @@ function Search() {
   const [results, setResults] = useState({
     loading: true,
     movies: [],
-    shows: [],
+    tv: [],
     movieError: null,
-    showError: null,
+    tvError: null,
   });
   const onChange = (text) => setKeyword(text);
   const search = async () => {
@@ -18,13 +18,13 @@ function Search() {
       return;
     }
     const [movies, movieError] = await movieApi.search(keyword);
-    const [shows, showError] = await tvApi.search(keyword);
+    const [tv, tvError] = await tvApi.search(keyword);
     setResults({
       loading: false,
       movies,
-      shows,
+      tv,
       movieError,
-      showError,
+      tvError,
     });
   };
 

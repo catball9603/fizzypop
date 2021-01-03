@@ -5,6 +5,7 @@ import { apiImage } from '../api';
 import Poster from './Poster';
 import { Text, TouchableOpacity } from 'react-native';
 import { trimText } from '../utils';
+import { useNavigation } from '@react-navigation/native';
 
 const Container = styled.View`
   width: 100%;
@@ -55,7 +56,10 @@ const Button = styled.View`
   border-radius: 3px;
 `;
 
-function Slide({ id, title, backgroundImage, votes, overview, poster }) {
+function Slide({ id, title, backgroundImage, votes, overview, poster, isTv = false }) {
+  const navigation = useNavigation();
+  const goToDetail = () => navigation.navigate('Detail', { id, title, backgroundImage, votes, overview, poster, isTv });
+
   return (
     <Container>
       <Bg source={{ uri: apiImage(backgroundImage) }} blurRadius={2} />
@@ -65,7 +69,7 @@ function Slide({ id, title, backgroundImage, votes, overview, poster }) {
           <Title>{trimText(title, 10)}</Title>
           <Votes>⭐{votes} / 10</Votes>
           <Overview ellipsizeMode="tail">{trimText(overview, 70)}</Overview>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={goToDetail}>
             <Button>
               <Text style={{ color: '#fff', fontSize: 14, textAlign: 'center', lineHeight: 25 }}>See Detail</Text>
             </Button>
@@ -79,10 +83,10 @@ function Slide({ id, title, backgroundImage, votes, overview, poster }) {
 Slide.propTypes = {
   id: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
-  backgroundImage: PropTypes.string.isRequired,
+  backgroundImage: PropTypes.string,
   votes: PropTypes.number.isRequired,
-  overview: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
+  overview: PropTypes.string,
+  poster: PropTypes.string,
 };
 
 export default Slide;

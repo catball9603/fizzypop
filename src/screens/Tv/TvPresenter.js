@@ -23,13 +23,31 @@ function TvPresenter({ id, loading, today, topRated, popular, thisWeek, refreshF
         <Title title={'Popular Tv Show'} />
         <HorizontalSlider>
           {popular.map((tv) => (
-            <VerticalContents key={tv.id} id={tv.id} title={tv.name} votes={tv.vote_average} poster={tv.poster_path} />
+            <VerticalContents
+              isTv={true}
+              key={tv.id}
+              id={tv.id}
+              title={tv.name}
+              votes={tv.vote_average}
+              poster={tv.poster_path}
+              overview={tv.overview}
+              backgroundImage={tv.backdrop_path}
+            />
           ))}
         </HorizontalSlider>
         <Title title={'Top Rated Tv Show'} />
         <HorizontalSlider>
           {topRated.map((tv) => (
-            <VerticalContents key={tv.id} id={tv.id} title={tv.name} votes={tv.vote_average} poster={tv.poster_path} />
+            <VerticalContents
+              isTv={true}
+              key={tv.id}
+              id={tv.id}
+              title={tv.name}
+              votes={tv.vote_average}
+              poster={tv.poster_path}
+              overview={tv.overview}
+              backgroundImage={tv.backdrop_path}
+            />
           ))}
         </HorizontalSlider>
         <Title title={'This Week'} />
@@ -37,6 +55,7 @@ function TvPresenter({ id, loading, today, topRated, popular, thisWeek, refreshF
           <Swiper loop={true} timeout={3} controlsEnabled={false}>
             {thisWeek.map((tv) => (
               <Slide
+                isTv={true}
                 key={tv.id}
                 id={tv.id}
                 title={tv.name}
@@ -52,12 +71,14 @@ function TvPresenter({ id, loading, today, topRated, popular, thisWeek, refreshF
         <View>
           {today.map((tv) => (
             <HorizontalContents
+              isTv={true}
               key={tv.id}
               id={tv.id}
               title={tv.name}
               votes={tv.vote_average}
               poster={tv.poster_path}
               overview={tv.overview}
+              backgroundImage={tv.backdrop_path}
             />
           ))}
         </View>
