@@ -58,7 +58,7 @@ const DataName = styled.Text`
 
 const DataValue = styled.Text`
   color: #fff;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 22px;
 `;
 
@@ -135,7 +135,7 @@ function DetailPresenter({ detail, loading, openBrowser }) {
                 <DataValue>IMDB page : </DataValue>
                 <View style={{ marginHorizontal: 3 }} />
                 <DataValue>
-                  <Fontisto name="imdb" size={30} color="#fff" />
+                  <Fontisto name="imdb" size={24} color="#fff" />
                 </DataValue>
               </Link>
             </TouchableOpacity>
@@ -152,7 +152,7 @@ function DetailPresenter({ detail, loading, openBrowser }) {
               >
                 <Link>
                   <DataValue>
-                    <FontAwesome name="youtube-play" size={30} color="#ff0000" />
+                    <FontAwesome name="youtube-play" size={24} color="#ff0000" />
                   </DataValue>
                   <DataValue>{`  ${video.name}`}</DataValue>
                 </Link>
