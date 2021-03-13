@@ -1,29 +1,33 @@
 {
   "expo": {
-    "name": "expo-movie-app",
-    "slug": "expo-movie-app",
+    "name": "fizzyPop",
+    "slug": "fizzyPop",
     "version": "1.0.0",
     "orientation": "portrait",
+    "primaryColor": "#212121",
+    "backgroundColor": "#212121",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#212121"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.catball9603.fizzyPop",
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+        "backgroundColor": "#212121"
+      },
+      "package": "com.catball9603.fizzyPop",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
