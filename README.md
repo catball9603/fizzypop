@@ -26,3 +26,5 @@
 ## ScreenShot
 
 ![screenshot](./assets/screenshot.jpg)
+
+.apk download: https://expo.io/artifacts/bf01d61a-815d-475a-a93d-e7cb4cf97e7c
